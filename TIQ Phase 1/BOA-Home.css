@@ -25,7 +25,7 @@
 }
 
 .u-section-2 .u-sheet-1 {
-  min-height: 1378px;
+  min-height: 1462px;
 }
 
 .u-section-2 .u-text-1 {
@@ -291,7 +291,7 @@
   grid-template-rows: auto;
   grid-auto-rows: 100%;
   margin-top: 15px;
-  margin-bottom: 60px;
+  margin-bottom: 0;
 }
 
 .u-section-2 .u-repeater-3 {
@@ -372,11 +372,17 @@
   margin: 15px auto 0;
 }
 
-@media (max-width: 1199px) {
-  .u-section-2 .u-sheet-1 {
-    min-height: 1202px;
-  }
+.u-section-2 .u-btn-9 {
+  border-style: solid;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition-duration: 0.5s;
+  margin: 15px 40px 60px auto;
+}
 
+@media (max-width: 1199px) {
   .u-section-2 .u-text-1 {
     font-size: 3rem;
     width: auto;
@@ -418,13 +424,13 @@
   .u-section-2 .u-repeater-3 {
     min-height: 178px;
   }
+
+  .u-section-2 .u-btn-9 {
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 991px) {
-  .u-section-2 .u-sheet-1 {
-    min-height: 2045px;
-  }
-
   .u-section-2 .u-text-1 {
     margin-right: 0;
   }
@@ -454,10 +460,6 @@
 }
 
 @media (max-width: 767px) {
-  .u-section-2 .u-sheet-1 {
-    min-height: 2254px;
-  }
-
   .u-section-2 .u-text-1 {
     font-size: 1.875rem;
     margin-top: 81px;
@@ -524,10 +526,6 @@
 }
 
 @media (max-width: 575px) {
-  .u-section-2 .u-sheet-1 {
-    min-height: 2361px;
-  }
-
   .u-section-2 .u-text-1 {
     font-size: 1.25rem;
     margin-top: 47px;
@@ -788,5 +786,23 @@
 }
 
 .u-section-2 .u-btn-8.u-btn-8.u-btn-8.hover {
+  border-radius: 10px !important;
+}
+
+.u-section-2 .u-btn-9,
+.u-section-2 .u-btn-9:before,
+.u-section-2 .u-btn-9 > .u-container-layout:before {
+  transition-property: fill, color, background-color, stroke-width, border-style, border-width, border-top-width, border-left-width, border-right-width, border-bottom-width, custom-border, borders, box-shadow, text-shadow, opacity, border-radius, stroke, border-color, font-size, font-style, font-weight, text-decoration, letter-spacing, transform, background-image, background-size, background-position;
+}
+
+.u-section-2 .u-btn-9.u-btn-9.u-btn-9:hover {
+  border-radius: 10px !important;
+}
+
+.u-section-2 .u-btn-9.u-btn-9.u-btn-9:hover > .u-container-layout:before {
+  background-color: transparent !important;
+}
+
+.u-section-2 .u-btn-9.u-btn-9.u-btn-9.hover {
   border-radius: 10px !important;
 }
