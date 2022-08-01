@@ -1,0 +1,25 @@
+{
+  "name": "tiq-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rexmirak/TIQ-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rexmirak/TIQ-Website/issues"
+  },
+  "homepage": "https://github.com/rexmirak/TIQ-Website#readme",
+  "dependencies": {
+    "alert": "^5.1.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "mongodb": "^4.8.1"
+  }
+}
