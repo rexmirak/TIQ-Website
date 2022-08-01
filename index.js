@@ -19,9 +19,10 @@ const { Session } = require("inspector");
 let app = express();
 let alert = require("alert");
 const session = require("express-session");
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: __dirname });
+  res.sendFile("BOA-Home.html", { root: "views" });
 });
 
 app.listen(3000);
