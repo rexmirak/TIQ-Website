@@ -22,7 +22,7 @@ const session = require("express-session");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.sendFile("BOA-Home.html", { root: "views" });
+  res.sendFile("index.html", { root: "views" });
 });
 
 app.listen(3000);
