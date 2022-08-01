@@ -25,4 +25,8 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "views" });
 });
 
-app.listen(3000);
+// app.listen(3000);
+const port = process.env.PORT || 8000;
+server.listen(port, () => {
+  console.log("App is running on port " + port);
+});
