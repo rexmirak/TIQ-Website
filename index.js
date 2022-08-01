@@ -25,7 +25,7 @@ app.set("view engine", "html");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
-  res.sendFile("Login.html", { root: "views" });
+  res.sendFile("index.html", { root: "views" });
 });
 
 // app.listen(3000);
