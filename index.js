@@ -465,7 +465,8 @@ app.post("/changePassword", async function (req, res) {
       }
     }
   }
-  console.log(currentUsers);
+  console.log("changed");
+  res.sendFile("change-password.html", { root: "views" });
 });
 //get pages
 app.get("/", (req, res) => {
