@@ -466,7 +466,15 @@ app.post("/changePassword", async function (req, res) {
     }
   }
   console.log("changed");
-  res.sendFile("change-password.html", { root: "views" });
+  if (Session["role"] === "BOA") {
+    res.sendFile("BOA-Home.html", { root: "views" });
+  }
+  if (Session["role"] === "FS") {
+    res.sendFile("FS-Home.html", { root: "views" });
+  }
+  if (Session["role"] === "HL") {
+    res.sendFile("HL-Home.html", { root: "views" });
+  }
 });
 //get pages
 app.get("/", (req, res) => {
@@ -477,4 +485,16 @@ app.get("/change-password.html", function (req, res) {
 });
 app.get("/BOA-Manage-Profiles", function (req, res) {
   res.render("BOA-Manage-Profiles", { content: [], selectedRole: "" });
+});
+app.get("/Add-A-DebateComp", function (req, res) {
+  res.render("Add-A-DebateComp");
+});
+app.get("/Add-A-DebateRoom", function (req, res) {
+  res.render("Add-A-DebateRoom");
+});
+// app.post("/Add-A-DebateComp", function (req, res) {
+//   res.render("Add-A-DebateRoom");
+// });
+app.post("/Add-A-DebateRoom", function (req, res) {
+  res.render("Add-A-DebateRoom");
 });
