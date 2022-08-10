@@ -8,7 +8,29 @@
     <title>Add A Debate</title>
     <link rel="stylesheet" href="css/nicepage2.css" media="screen" />
     <link rel="stylesheet" href="css/Add-A-Debate.css" media="screen" />
+<style>
+      .btn {
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        text-shadow: 1px 1px 30px #666666;
+        font-family: Arial;
+        color: #ffda00;
+        font-size: 20px;
+        background: #b83126;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+      }
 
+      .btn:hover {
+        background: #ffda00;
+        color: #b83126;
+        text-decoration: none;
+      }
+      table, th, td {
+  border: 2px solid black;
+}
+    </style>
     <meta name="generator" content="Nicepage 4.15.8, nicepage.com" />
     <link rel="icon" href="images/favicon.png" />
     <link
@@ -49,65 +71,362 @@
       </a>
     </header>
     <section class="u-clearfix u-custom-color-1 u-section-1" id="sec-f4f5">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <span class="u-file-icon u-icon u-icon-1"
-          ><img src="images/8054429.png" alt=""
-        /></span>
+      <div class="u-clearfix u-sheet" >
         <h1
           class="u-text u-text-custom-color-3 u-text-default u-title u-text-1"
         >
-          Add Debate
+          Add Room
         </h1>
       </div>
-      <h4 class="u-text u-text-custom-color-3 u-text-default u-title u-text-1">
-        Choose the competetion, stage and room.
-      </h4>
       <div class="u-clearfix u-sheet u-sheet-1">
-        <form method="POST" action="# ">
-          <div style="float: left">
-            <label for="username">First Name</label>
+<form method="POST" action="/confirm-Room">
+<table>
+<!--heading-->
+  <tr>
+    <th><span style="text-align: center; color: #B83126 ; font-size: 1.5rem;">Position</span></th>
+    <th><span style="text-align: center; color: #B83126 ; font-size: 1.5rem;">Debater Name</span></th>
+    <th><span style="text-align: center; color: #B83126 ; font-size: 1.5rem;">Matter</span></th>
+    <th><span style="text-align: center; color: #B83126 ; font-size: 1.5rem;">Manner</span></th>
+    <th><span style="text-align: center; color: #B83126 ; font-size: 1.5rem;">Structure</span></th>
+  </tr>
+<!--end heading-->
+<!--PM-->
+  <tr>
+    <td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">PM</span></td>
+    <td><div>
             <input
-              id="user_first_name"
-              name="user[first_name]"
-              size="30"
+              id="pmName"
+              name="pmName"
               type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
             />
-          </div>
-
-          <div style="float: left">
-            <span> </span>
-            <label for="name">Last Name</label>
+          </div></td>
+<td><div>
             <input
-              id="user_last_name"
-              name="user[last_name]"
-              size="30"
-              type="text"
+              id="pmMatter"
+              name="pmMatter"
+              type="number"
+            placeholder="Matter Score" required=""
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
             />
-          </div>
-
-          <br /><br />
-
-          <div style="float: left">
-            <label for="username">First Name</label>
+          </div></td>
+<td><div >
             <input
-              id="user_first_name"
-              name="user[first_name]"
-              size="30"
-              type="text"
+              id="pmManner"
+              name="pmManner"
+              type="number"
+            placeholder="Manner Score" required=""
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
             />
-          </div>
-
-          <div style="float: left">
-            <label for="name">Last Name</label>
+          </div></td>
+<td><div>
             <input
-              id="user_last_name"
-              name="user[last_name]"
-              size="30"
-              type="text"
+              id="pmStruct"
+              name="pmStruct" required=""
+              type="number"
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
             />
+          </div></td>
+  </tr>
+<!--OL-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  OL</span></td>
+<td><div >
+            <input
+              id="olName"
+              name="olName" 
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="olMatter"
+              name="olMatter"
+              type="number" required=""
+            placeholder="Matter Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="olManner"
+              name="olManner" required=""
+              type="number"
+            placeholder="Manner Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="olStruct"
+              name="olStruct" required=""
+              type="number"
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+<!--DPM-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  DPM</span></td>
+<td><div >
+            <input
+              id="dpmName"
+              name="dpmName" 
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="dpmMatter" required=""
+              name="dpmMatter"
+              type="number"
+            placeholder="Matter Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="dpmManner"
+              name="dpmManner" required=""
+              type="number"
+            placeholder="Manner Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="dpmStruct"
+              name="dpmStruct" required=""
+              type="number"
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+<!--DOL-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  DOL </span></td>
+<td><div >
+            <input
+              id="dolName"
+              name="dolName"
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="dolMatter"
+              name="dolMatter"
+              type="number" required=""
+            placeholder="Matter Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="dolManner"
+              name="dolManner"
+              type="number"
+            placeholder="Manner Score" required=""
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="dolStruct" required=""
+              name="dolStruct"
+              type="number"
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+<!--MOG-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  MoG</span></td>
+<td><div >
+            <input
+              id="mogName"
+              name="mogName"
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="mogMatter"
+              name="mogMatter"
+              type="number"
+            placeholder="Matter Score" required=""
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="mogManner"
+              name="mogManner"
+              type="number" required=""
+            placeholder="Manner Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="mogStruct"
+              name="mogStruct"
+              type="number" required=""
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+<!--MOO-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  MoO</span></td>
+<td><div >
+            <input
+              id="mooName"
+              name="mooName"
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="mooMatter"
+              name="mooMatter"
+              type="number" required=""
+            placeholder="Matter Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="mooManner"
+              name="mooManner" required=""
+              type="number"
+            placeholder="Manner Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="mooStruct"
+              name="mooStruct" required=""
+              type="number"
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+<!--GW-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  GW</span></td>
+<td><div >
+            <input
+              id="gwName"
+              name="gwName"
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="gwMatter"
+              name="gwMatter"
+              type="number" required=""
+            placeholder="Matter Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="gwManner"
+              name="gwManner" required=""
+              type="number"
+            placeholder="Manner Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="gwStruct"
+              name="gwStruct"
+              type="number" required=""
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+<!--OW-->
+<tr>
+<td><span style="float: left; margin-right: 1rem; color: #B83126 ; font-size: 1.5rem;">  OW</span></td>
+<td><div >
+            <input
+              id="owName"
+              name="owName"
+              type="text"
+              placeholder="Debater Name"
+              required=""
+              style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="owMatter"
+              name="owMatter"
+              type="number"
+            placeholder="Matter Score" required=""
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="owManner"
+              name="owManner" required=""
+              type="number"
+            placeholder="Manner Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+<td><div >
+            <input
+              id="owStruct"
+              name="owStruct"
+              type="number" required=""
+            placeholder="Structure Score"
+            style="background-image: linear-gradient(to right, #0d895b, #166199);"
+            />
+          </div></td>
+</tr>
+</table>
+<!-- submit -->
+          <div
+            class="u-align-center u-form-group u-form-submit"
+            style="float: left; margin-bottom: 5rem;"
+          >
+            <input type="submit" value="Add Room " class="btn" />
           </div>
-        </form>
-      </div>
+</form>
     </section>
     <footer
       class="u-align-center u-clearfix u-footer u-image u-footer"

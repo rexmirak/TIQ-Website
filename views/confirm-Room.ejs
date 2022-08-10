@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html style="font-size: 16px" lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Confirm Room</title>
+    <link rel="stylesheet" href="css/nicepage3.css" media="screen" />
+    <link rel="stylesheet" href="css/confirm-Room.css" media="screen" />
+    <script src="index.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.15.8, nicepage.com" />
+    <link rel="icon" href="images/favicon.png" />
+    <link
+      id="u-theme-google-font"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "phase 2",
+        "logo": "images/TIQGOLDLOGO.png"
+      }
+    </script>
+    <meta name="theme-color" content="#478ac9" />
+    <meta property="og:title" content="Confirm Room" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en">
+    <header class="u-clearfix u-header u-header" id="sec-4f92">
+      <img
+        class="u-expanded-width u-image u-image-default u-preserve-proportions u-image-1"
+        src="images/TIQPatternWithBackground.png"
+        alt=""
+        data-image-width="1600"
+        data-image-height="1600"
+      /><a
+        href="https://nicepage.com/c/architecture-building-website-templates"
+        class="u-image u-logo u-image-2"
+        data-image-width="2048"
+        data-image-height="1461"
+      >
+        <img src="images/TIQGOLDLOGO.png" class="u-logo-image u-logo-image-1" />
+      </a>
+    </header>
+    <section class="u-clearfix u-custom-color-1 u-section-1" id="sec-f4f5">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h1
+          class="u-text u-text-custom-color-3 u-text-default u-title u-text-1"
+        >
+          Confirm Room
+        </h1>
+        <div class="u-table u-table-responsive u-table-1">
+          <table class="u-table-entity">
+            <colgroup>
+              <col width="18.2%" />
+              <col width="22.1%" />
+              <col width="19.9%" />
+              <col width="19.9%" />
+              <col width="19.9%" />
+            </colgroup>
+            <thead class="u-palette-4-base u-table-header u-table-header-1">
+              <tr style="height: 40px">
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-1"
+                >
+                  Position
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-2"
+                >
+                  Team
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-3"
+                >
+                  1st speaker
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-4"
+                >
+                  2nd speaker
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-5"
+                >
+                  Team<br />Total
+                </th>
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-6"
+                >
+                  1<br />
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-7"
+                >
+                  <%= rankList[0].team%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-8"
+                >
+                  <%= rankList[0].first%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-9"
+                >
+                  <%= rankList[0].second%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-10"
+                >
+                  <%= rankList[0].total%>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-11"
+                >
+                  2
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-12"
+                >
+                  <%= rankList[1].team%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-13"
+                >
+                  <%= rankList[1].first%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-14"
+                >
+                  <%= rankList[1].second%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-15"
+                >
+                  <%= rankList[1].total%>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-16"
+                >
+                  3
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-17"
+                >
+                  <%= rankList[2].team%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-18"
+                >
+                  <%= rankList[2].first%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-19"
+                >
+                  <%= rankList[2].second%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-20"
+                >
+                  <%= rankList[2].total%>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-21"
+                >
+                  4<br />
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-22"
+                >
+                  <%= rankList[3].team%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-23"
+                >
+                  <%= rankList[3].first%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-24"
+                >
+                  <%= rankList[3].second%>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-25"
+                >
+                  <%= rankList[3].total%>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="u-table u-table-responsive u-table-2">
+          <table class="u-table-entity">
+            <colgroup>
+              <col width="16.6%" />
+              <col width="17%" />
+              <col width="16.6%" />
+              <col width="16.6%" />
+              <col width="16.6%" />
+              <col width="16.6%" />
+            </colgroup>
+            <thead class="u-palette-4-base u-table-header u-table-header-2">
+              <tr style="height: 32px">
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-26"
+                >
+                  Position
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-27"
+                >
+                  Name
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-28"
+                >
+                  Matter
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-29"
+                >
+                  Manner
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-30"
+                >
+                  Structure
+                </th>
+                <th
+                  class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-31"
+                >
+                  Individual Total&nbsp;
+                </th>
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-32"
+                >
+                  PM
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-33"
+                >
+                  <%= ""+roomList[0].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-34"
+                >
+                  <%= ""+roomList[0].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-35"
+                >
+                  <%= ""+roomList[0].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-36"
+                >
+                  <%= ""+roomList[0].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-37"
+                >
+                  <%=
+                  parseFloat(roomList[0].matter)+parseFloat(roomList[0].manner)+parseFloat(roomList[0].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 43px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-38"
+                >
+                  OL
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-39"
+                >
+                  <%= ""+roomList[1].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-40"
+                >
+                  <%= ""+roomList[1].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-41"
+                >
+                  <%= ""+roomList[1].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-42"
+                >
+                  <%= ""+roomList[1].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-43"
+                >
+                  <%=
+                  parseFloat(roomList[1].matter)+parseFloat(roomList[1].manner)+parseFloat(roomList[1].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-44"
+                >
+                  DPM
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-45"
+                >
+                  <%= ""+roomList[2].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-46"
+                >
+                  <%= ""+roomList[2].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-47"
+                >
+                  <%= ""+roomList[2].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-48"
+                >
+                  <%= ""+roomList[2].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-49"
+                >
+                  <%=
+                  parseFloat(roomList[2].matter)+parseFloat(roomList[2].manner)+parseFloat(roomList[2].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-50"
+                >
+                  DOL<br />
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-51"
+                >
+                  <%= ""+roomList[3].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-52"
+                >
+                  <%= ""+roomList[3].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-53"
+                >
+                  <%= ""+roomList[3].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-54"
+                >
+                  <%= ""+roomList[3].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-55"
+                >
+                  <%=
+                  parseFloat(roomList[3].matter)+parseFloat(roomList[3].manner)+parseFloat(roomList[3].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-3 u-table-cell-56"
+                >
+                  MoG
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-57"
+                >
+                  <%= ""+roomList[4].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-58"
+                >
+                  <%= ""+roomList[4].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-59"
+                >
+                  <%= ""+roomList[4].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-60"
+                >
+                  <%= ""+roomList[4].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-61"
+                >
+                  <%=
+                  parseFloat(roomList[4].matter)+parseFloat(roomList[4].manner)+parseFloat(roomList[4].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-2 u-table-cell-62"
+                >
+                  MoO
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-63"
+                >
+                  <%= ""+roomList[5].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-64"
+                >
+                  <%= ""+roomList[5].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-65"
+                >
+                  <%= ""+roomList[5].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-66"
+                >
+                  <%= ""+roomList[5].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-67"
+                >
+                  <%=
+                  parseFloat(roomList[5].matter)+parseFloat(roomList[5].manner)+parseFloat(roomList[5].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-3 u-table-cell-68"
+                >
+                  GW
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-69"
+                >
+                  <%= ""+roomList[6].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-70"
+                >
+                  <%= ""+roomList[6].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-71"
+                >
+                  <%= ""+roomList[6].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-72"
+                >
+                  <%= ""+roomList[6].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-73"
+                >
+                  <%=
+                  parseFloat(roomList[6].matter)+parseFloat(roomList[6].manner)+parseFloat(roomList[6].structure)
+                  %>
+                </td>
+              </tr>
+              <tr style="height: 45px">
+                <td
+                  class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-2 u-table-cell-74"
+                >
+                  OW
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-75"
+                >
+                  <%= ""+roomList[7].name %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-76"
+                >
+                  <%= ""+roomList[7].matter %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-77"
+                >
+                  <%= ""+roomList[7].manner %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-78"
+                >
+                  <%= ""+roomList[7].structure %>
+                </td>
+                <td
+                  class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-79"
+                >
+                  <%=
+                  parseFloat(roomList[7].matter)+parseFloat(roomList[7].manner)+parseFloat(roomList[7].structure)
+                  %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h6 class="u-text u-text-custom-color-2 u-text-default u-text-2">
+          If you want to edit the room&nbsp;<br />navigate to the previous page
+          !
+        </h6>
+        <form action="/DBRoom" method="post">
+          <div></div>
+            <input
+              type="submit"
+              value="CONFIRM"
+              style="font-size: 1.5rem"
+              class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-50 u-text-custom-color-3 u-text-hover-custom-color-2 u-btn-1"
+            />
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer
+      class="u-align-center u-clearfix u-footer u-image u-footer"
+      id="sec-d7fd"
+      data-image-width="1600"
+      data-image-height="1600"
+    >
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p
+          class="u-small-text u-text u-text-custom-color-3 u-text-variant u-text-1"
+        >
+          ⓒ The Intelligent Question&nbsp;
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

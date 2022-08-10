@@ -487,14 +487,280 @@ app.get("/BOA-Manage-Profiles", function (req, res) {
   res.render("BOA-Manage-Profiles", { content: [], selectedRole: "" });
 });
 app.get("/Add-A-DebateComp", function (req, res) {
-  res.render("Add-A-DebateComp");
+  res.render("Add-A-DebateComp", { league: false, OC: false });
 });
-app.get("/Add-A-DebateRoom", function (req, res) {
-  res.render("Add-A-DebateRoom");
+let selectedComp;
+app.post("/add-debate-select-comp", function (req, res) {
+  selectedComp = req.body.competetion;
+  let OC, League;
+  if (selectedComp === "OC") {
+    OC = true;
+    League = false;
+  } else {
+    OC = false;
+    League = true;
+  }
+  res.render("add-a-debatecomp", { league: League, OC: OC });
 });
-// app.post("/Add-A-DebateComp", function (req, res) {
-//   res.render("Add-A-DebateRoom");
-// });
-app.post("/Add-A-DebateRoom", function (req, res) {
-  res.render("Add-A-DebateRoom");
+let leagueStage, OCStage, selectedRoom, stage;
+app.post("/add-a-debateroom", function (req, res) {
+  if (selectedComp === "OC") {
+    OCStage = req.body.stageOC;
+    stage = OCStage;
+  } else {
+    leagueStage = req.body.stageLeague;
+    stage = leagueStage;
+  }
+  selectedRoom = req.body.room;
+  res.render("add-a-debateRoom");
+});
+let roomList;
+app.post("/confirm-Room", function (req, res) {
+  // PM
+  let pmName = req.body.pmName;
+  let pmMatter = req.body.pmMatter;
+  let pmManner = req.body.pmManner;
+  let pmStruct = req.body.pmStruct;
+  let pm = {
+    name: pmName,
+    matter: pmMatter,
+    manner: pmManner,
+    structure: pmStruct,
+  };
+  // OL
+  let olName = req.body.olName;
+  let olMatter = req.body.olMatter;
+  let olManner = req.body.olManner;
+  let olStruct = req.body.olStruct;
+  let ol = {
+    name: olName,
+    matter: olMatter,
+    manner: olManner,
+    structure: olStruct,
+  };
+  // DPM
+  let dpmName = req.body.dpmName;
+  let dpmMatter = req.body.dpmMatter;
+  let dpmManner = req.body.dpmManner;
+  let dpmStruct = req.body.dpmStruct;
+  let dpm = {
+    name: dpmName,
+    matter: dpmMatter,
+    manner: dpmManner,
+    structure: dpmStruct,
+  };
+  // DOL
+  let dolName = req.body.dolName;
+  let dolMatter = req.body.dolMatter;
+  let dolManner = req.body.dolManner;
+  let dolStruct = req.body.dolStruct;
+  let dol = {
+    name: dolName,
+    matter: dolMatter,
+    manner: dolManner,
+    structure: dolStruct,
+  };
+  // MoG
+  let MoGName = req.body.mogName;
+  let MoGMatter = req.body.mogMatter;
+  let MoGManner = req.body.mogManner;
+  let MoGStruct = req.body.mogStruct;
+  let mog = {
+    name: MoGName,
+    matter: MoGMatter,
+    manner: MoGManner,
+    structure: MoGStruct,
+  };
+  // MoO
+  let MoOName = req.body.mooName;
+  let MoOMatter = req.body.mooMatter;
+  let MoOManner = req.body.mooManner;
+  let MoOStruct = req.body.mooStruct;
+  let moo = {
+    name: MoOName,
+    matter: MoOMatter,
+    manner: MoOManner,
+    structure: MoOStruct,
+  };
+  // GW
+  let gwName = req.body.gwName;
+  let gwMatter = req.body.gwMatter;
+  let gwManner = req.body.gwManner;
+  let gwStruct = req.body.gwStruct;
+  let gw = {
+    name: gwName,
+    matter: gwMatter,
+    manner: gwManner,
+    structure: gwStruct,
+  };
+  // OW
+  let owName = req.body.owName;
+  let owMatter = req.body.owMatter;
+  let owManner = req.body.owManner;
+  let owStruct = req.body.owStruct;
+  let ow = {
+    name: owName,
+    matter: owMatter,
+    manner: owManner,
+    structure: owStruct,
+  };
+  // END GETTING ROOM SCORES
+  roomList = [pm, ol, dpm, dol, mog, moo, gw, ow];
+  let ogTotal =
+    parseFloat(pmMatter) +
+    parseFloat(pmManner) +
+    parseFloat(pmStruct) +
+    parseFloat(dpmMatter) +
+    parseFloat(dpmManner) +
+    parseFloat(dpmStruct);
+
+  let ooTotal =
+    parseFloat(olMatter) +
+    parseFloat(olManner) +
+    parseFloat(olStruct) +
+    parseFloat(dolMatter) +
+    parseFloat(dolManner) +
+    parseFloat(dolStruct);
+
+  let cgTotal =
+    parseFloat(MoGMatter) +
+    parseFloat(MoGManner) +
+    parseFloat(MoGStruct) +
+    parseFloat(gwMatter) +
+    parseFloat(gwManner) +
+    parseFloat(gwStruct);
+
+  let coTotal =
+    parseFloat(MoOMatter) +
+    parseFloat(MoOManner) +
+    parseFloat(MoOStruct) +
+    parseFloat(owMatter) +
+    parseFloat(owManner) +
+    parseFloat(owStruct);
+  let og = {
+    team: "OG",
+    first: pmName,
+    second: dpmName,
+    total: ogTotal,
+  };
+  let oo = {
+    team: "OO",
+    first: olName,
+    second: dolName,
+    total: ooTotal,
+  };
+  let cg = {
+    team: "CG",
+    first: MoGName,
+    second: gwName,
+    total: cgTotal,
+  };
+  let co = {
+    team: "CO",
+    first: MoOName,
+    second: owName,
+    total: coTotal,
+  };
+  let teamsList = [og, oo, cg, co];
+
+  for (var i = 0; i < teamsList.length; i++) {
+    for (var j = 0; j < teamsList.length - i - 1; j++) {
+      if (parseFloat(teamsList[j].total) > parseFloat(teamsList[j + 1].total)) {
+        var temp = teamsList[j];
+        teamsList[j] = teamsList[j + 1];
+        teamsList[j + 1] = temp;
+      }
+    }
+  }
+  teamsList.reverse();
+  res.render("confirm-Room", { roomList: roomList, rankList: teamsList });
+});
+app.post("/DBRoom", async function (req, res) {
+  let debate = {
+    competetion: selectedComp,
+    stage: stage,
+    roomScores: {
+      PM: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      OL: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      DPM: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      DOL: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      MoG: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      MoO: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      GW: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+      OW: {
+        name: "",
+        matter: "",
+        manner: "",
+        structure: "",
+        total: "",
+      },
+    },
+  };
+  const { MongoClient, ServerApiVersion } = require("mongodb");
+  var url =
+    "mongodb+srv://tiqboa:TIQ2022@tiqluster.zi4f1.mongodb.net/?retryWrites=true&w=majority";
+
+  var client = new MongoClient(url, {
+    useNewUrlParser: true,
+    useUniFiedTopology: true,
+  });
+  await client.connect();
+  await client.db("testTIQ").collection("debates").insertOne(debate);
+  alert("registeration complete");
+  if (Session["role"] == "BOA") {
+    res.sendFile("BOA-Home.html", { root: "views" });
+  } else if (Session["role"] == "HL") {
+    res.sendFile("HL-Home.html", { root: "views" });
+  } else if (Session["role"] == "FS") {
+    res.sendFile("FS-Home.html", { root: "views" });
+  } else if (Session["role"] == "admin") {
+    //to add the page
+    // res.sendFile("admin.html", { root: "views" });
+    // break;
+  }
+});
+app.get("/viewDebates", function (req, res) {
+  res.render("viewDebates", { league: false, OC: false });
 });
