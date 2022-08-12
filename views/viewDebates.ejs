@@ -7,27 +7,9 @@
     <meta name="description" content="" />
     <title>Add A Debate</title>
     <link rel="stylesheet" href="css/nicepage2.css" media="screen" />
-    <link rel="stylesheet" href="css/Add-A-Debate.css" media="screen" />
-    <style>
-      .btn {
-        -webkit-border-radius: 28;
-        -moz-border-radius: 28;
-        border-radius: 28px;
-        text-shadow: 1px 1px 30px #666666;
-        font-family: Arial;
-        color: #ffda00;
-        font-size: 20px;
-        background: #b83126;
-        padding: 10px 20px 10px 20px;
-        text-decoration: none;
-      }
+    <link rel="stylesheet" href="css/viewDebates.css" media="screen" />
 
-      .btn:hover {
-        background: #ffda00;
-        color: #b83126;
-        text-decoration: none;
-      }
-    </style>
+    <style></style>
     <meta name="generator" content="Nicepage 4.15.8, nicepage.com" />
     <link rel="icon" href="images/favicon.png" />
     <link
@@ -67,7 +49,11 @@
         <img src="images/TIQGOLDLOGO.png" class="u-logo-image u-logo-image-1" />
       </a>
     </header>
-    <section class="u-clearfix u-custom-color-1 u-section-1" id="sec-f4f5">
+    <section
+      class="u-clearfix u-custom-color-1 u-section-1"
+      id="sec-f4f5"
+      style="padding: 1rem"
+    >
       <div class="u-clearfix u-sheet u-sheet-1">
         <span class="u-file-icon u-icon u-icon-1"
           ><img src="images/8054429.png" alt=""
@@ -75,18 +61,15 @@
         <h1
           class="u-text u-text-custom-color-3 u-text-default u-title u-text-1"
         >
-          Add Debate
+          View Debates
         </h1>
       </div>
-      <h4 class="u-text u-text-custom-color-3 u-text-default u-title u-text-1">
-        Choose the competetion, stage and room.
-      </h4>
       <div class="u-clearfix u-sheet u-sheet-1">
-        <form method="POST" action="/add-debate-select-comp">
-          <div class="u-form-select-wrapper" style="float: left">
+        <form method="POST" action="/viewComp">
+          <div class="u-form-select-wrapper">
             <select
               id="selectCompet"
-              name="competetion"
+              name="competetionView"
               class="u-border-5 u-border-grey-30 u-gradient u-input u-input-rectangle u-radius-13 u-text-custom-color-3 u-input-6"
               required="required"
               style="background-color: maroon"
@@ -102,67 +85,468 @@
             <input type="submit" value="Choose Competition" class="btn" />
           </div>
         </form>
-        <!-- show stage -->
-        <form method="POST" action="/add-a-debateroom">
-          <% if(league) {%>
-          <div class="u-form-select-wrapper" style="float: left">
-            <select
-              id="stageLeague"
-              name="stageLeague"
-              class="u-border-5 u-border-grey-30 u-gradient u-input u-input-rectangle u-radius-13 u-text-custom-color-3 u-input-6"
-              required="required"
-              style="background-color: maroon"
-            >
-              <option value="R1">Round 1</option>
-              <option value="R2">Round 2</option>
-              <option value="R3">Round 3</option>
-              <option value="R4">Round 4</option>
-            </select>
-          </div>
-          <%}%> <% if(OC) {%>
-          <div class="u-form-select-wrapper" style="float: left">
-            <select
-              id="stageOC"
-              name="stageOC"
-              class="u-border-5 u-border-grey-30 u-gradient u-input u-input-rectangle u-radius-13 u-text-custom-color-3 u-input-6"
-              required="required"
-              style="background-color: maroon"
-            >
-              <option value="IHD1">IHD1</option>
-              <option value="IHD2">IHD2</option>
-              <option value="PL1">Prelims 1</option>
-              <option value="PL2">Prelims 2</option>
-              <option value="PL3">Prelims 3</option>
-              <option value="SF">ٍSemifinals</option>
-              <option value="TGD">TGD</option>
-            </select>
-          </div>
-          <%}%><% if(OC||league) {%>
-          <div class="u-form-select-wrapper" style="float: left">
-            <select
-              id="selectRoom"
-              name="room"
-              class="u-border-5 u-border-grey-30 u-gradient u-input u-input-rectangle u-radius-13 u-text-custom-color-3 u-input-6"
-              required="required"
-              style="background-color: maroon"
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-          <div
-            class="u-align-center u-form-group u-form-submit"
-            style="float: left"
-          >
-            <input type="submit" value="Choose Room" class="btn" />
-          </div>
-          <%}%>
-        </form>
       </div>
+
+      <% for(var i=0; i < dbDebates.length; i++) { %>
+      <h3 class="u-text u-text-custom-color-3 u-text-default u-title u-text-1">
+        <%=competetion+": "+dbDebates[i].stage +", Room: "+ dbDebates[i].room%>
+      </h3>
+
+      <div class="u-table u-table-responsive u-table-1">
+        <table class="u-table-entity">
+          <colgroup>
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+          </colgroup>
+          <thead class="u-palette-4-base u-table-header u-table-header-1">
+            <tr style="height: 40px">
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-1"
+              >
+                Position
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-2"
+              >
+                Team
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-3"
+              >
+                1st speaker
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-4"
+              >
+                2nd speaker
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-5"
+              >
+                Team<br />Total
+              </th>
+            </tr>
+          </thead>
+          <tbody class="u-table-body">
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-6"
+              >
+                1<br />
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-7"
+              >
+                <%=dbDebates[i].teamScores.frst.team%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-8"
+              >
+                <%=dbDebates[i].teamScores.frst.first%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-9"
+              >
+                <%=dbDebates[i].teamScores.frst.second%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-10"
+              >
+                <%=dbDebates[i].teamScores.frst.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-6"
+              >
+                2
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-12"
+              >
+                <%=dbDebates[i].teamScores.scnd.team%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-13"
+              >
+                <%=dbDebates[i].teamScores.scnd.first%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-14"
+              >
+                <%=dbDebates[i].teamScores.scnd.second%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-15"
+              >
+                <%=dbDebates[i].teamScores.scnd.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-16"
+              >
+                3
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-17"
+              >
+                <%=dbDebates[i].teamScores.thrd.team%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-18"
+              >
+                <%=dbDebates[i].teamScores.thrd.first%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-19"
+              >
+                <%=dbDebates[i].teamScores.thrd.second%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-20"
+              >
+                <%=dbDebates[i].teamScores.thrd.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-21"
+              >
+                4<br />
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-22"
+              >
+                <%=dbDebates[i].teamScores.frth.team%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-23"
+              >
+                <%=dbDebates[i].teamScores.frth.first%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-24"
+              >
+                <%=dbDebates[i].teamScores.frth.second%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-25"
+              >
+                <%=dbDebates[i].teamScores.frth.total%>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="u-table u-table-responsive u-table-1">
+        <table class="u-table-entity">
+          <colgroup>
+            <col width="16.6%" />
+            <col width="17%" />
+            <col width="16.6%" />
+            <col width="16.6%" />
+            <col width="16.6%" />
+            <col width="16.6%" />
+          </colgroup>
+          <thead class="u-palette-4-base u-table-header u-table-header-2">
+            <tr style="height: 32px">
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-26"
+              >
+                Position
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-27"
+              >
+                Name
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-28"
+              >
+                Matter
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-29"
+              >
+                Manner
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-30"
+              >
+                Structure
+              </th>
+              <th
+                class="u-border-1 u-border-palette-4-base u-custom-color-2 u-table-cell u-table-cell-31"
+              >
+                Individual Total&nbsp;
+              </th>
+            </tr>
+          </thead>
+          <tbody class="u-table-body">
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-32"
+              >
+                PM
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-33"
+              >
+                <%=dbDebates[i].roomScores.PM.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-34"
+              >
+                <%=dbDebates[i].roomScores.PM.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-35"
+              >
+                <%=dbDebates[i].roomScores.PM.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-36"
+              >
+                <%=dbDebates[i].roomScores.PM.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-37"
+              >
+                <%=dbDebates[i].roomScores.PM.total%>
+              </td>
+            </tr>
+            <tr style="height: 43px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-38"
+              >
+                OL
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-39"
+              >
+                <%=dbDebates[i].roomScores.OL.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-40"
+              >
+                <%=dbDebates[i].roomScores.OL.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-41"
+              >
+                <%=dbDebates[i].roomScores.OL.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-42"
+              >
+                <%=dbDebates[i].roomScores.OL.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-43"
+              >
+                <%=dbDebates[i].roomScores.OL.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-3 u-table-cell-44"
+              >
+                DPM
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-45"
+              >
+                <%=dbDebates[i].roomScores.DPM.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-46"
+              >
+                <%=dbDebates[i].roomScores.DPM.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-47"
+              >
+                <%=dbDebates[i].roomScores.DPM.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-48"
+              >
+                <%=dbDebates[i].roomScores.DPM.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-49"
+              >
+                <%=dbDebates[i].roomScores.DPM.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-first-column u-gradient u-table-cell u-text-custom-color-2 u-table-cell-50"
+              >
+                DOL<br />
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-51"
+              >
+                <%=dbDebates[i].roomScores.DOL.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-52"
+              >
+                <%=dbDebates[i].roomScores.DOL.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-53"
+              >
+                <%=dbDebates[i].roomScores.DOL.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-54"
+              >
+                <%=dbDebates[i].roomScores.DOL.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-55"
+              >
+                <%=dbDebates[i].roomScores.DOL.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-3 u-table-cell-56"
+              >
+                MoG
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-57"
+              >
+                <%=dbDebates[i].roomScores.MoG.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-58"
+              >
+                <%=dbDebates[i].roomScores.MoG.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-59"
+              >
+                <%=dbDebates[i].roomScores.MoG.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-60"
+              >
+                <%=dbDebates[i].roomScores.MoG.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-61"
+              >
+                <%=dbDebates[i].roomScores.MoG.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-2 u-table-cell-62"
+              >
+                MoO
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-63"
+              >
+                <%=dbDebates[i].roomScores.MoO.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-64"
+              >
+                <%=dbDebates[i].roomScores.MoO.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-65"
+              >
+                <%=dbDebates[i].roomScores.MoO.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-66"
+              >
+                <%=dbDebates[i].roomScores.MoO.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-67"
+              >
+                <%=dbDebates[i].roomScores.MoO.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-3 u-table-cell-68"
+              >
+                GW
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-69"
+              >
+                <%=dbDebates[i].roomScores.GW.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-70"
+              >
+                <%=dbDebates[i].roomScores.GW.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-71"
+              >
+                <%=dbDebates[i].roomScores.GW.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-72"
+              >
+                <%=dbDebates[i].roomScores.GW.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-73"
+              >
+                <%=dbDebates[i].roomScores.GW.total%>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td
+                class="u-border-1 u-border-grey-30 u-gradient u-table-cell u-text-custom-color-2 u-table-cell-74"
+              >
+                OW
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-75"
+              >
+                <%=dbDebates[i].roomScores.OW.name%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-76"
+              >
+                <%=dbDebates[i].roomScores.OW.matter%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-77"
+              >
+                <%=dbDebates[i].roomScores.OW.manner%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-78"
+              >
+                <%=dbDebates[i].roomScores.OW.structure%>
+              </td>
+              <td
+                class="u-border-1 u-border-grey-30 u-custom-color-3 u-table-cell u-table-cell-79"
+              >
+                <%=dbDebates[i].roomScores.OW.total%>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <% } %>
     </section>
     <footer
       class="u-align-center u-clearfix u-footer u-image u-footer"

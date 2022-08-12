@@ -41,7 +41,6 @@ app.listen(port, function () {
 //post
 //login
 app.post("/", function (req, res) {
-  console.log("log");
   var user = req.body.username;
   var pass = req.body.password;
   let role = "";
@@ -360,7 +359,6 @@ app.post("/removeSelectRole", async function (req, res) {
     });
   }
   if (role === "Pegasus Debater") {
-    console.log("enters cl");
     const { MongoClient, ServerApiVersion } = require("mongodb");
     var url =
       "mongodb+srv://tiqboa:TIQ2022@tiqluster.zi4f1.mongodb.net/?retryWrites=true&w=majority";
@@ -465,7 +463,6 @@ app.post("/changePassword", async function (req, res) {
       }
     }
   }
-  console.log("changed");
   if (Session["role"] === "BOA") {
     res.sendFile("BOA-Home.html", { root: "views" });
   }
@@ -514,7 +511,7 @@ app.post("/add-a-debateroom", function (req, res) {
   selectedRoom = req.body.room;
   res.render("add-a-debateRoom");
 });
-let roomList;
+let roomList, teamsList;
 app.post("/confirm-Room", function (req, res) {
   // PM
   let pmName = req.body.pmName;
@@ -523,9 +520,10 @@ app.post("/confirm-Room", function (req, res) {
   let pmStruct = req.body.pmStruct;
   let pm = {
     name: pmName,
-    matter: pmMatter,
-    manner: pmManner,
-    structure: pmStruct,
+    matter: parseFloat(pmMatter),
+    manner: parseFloat(pmManner),
+    structure: parseFloat(pmStruct),
+    total: parseFloat(pmMatter) + parseFloat(pmManner) + parseFloat(pmStruct),
   };
   // OL
   let olName = req.body.olName;
@@ -534,9 +532,10 @@ app.post("/confirm-Room", function (req, res) {
   let olStruct = req.body.olStruct;
   let ol = {
     name: olName,
-    matter: olMatter,
-    manner: olManner,
-    structure: olStruct,
+    matter: parseFloat(olMatter),
+    manner: parseFloat(olManner),
+    structure: parseFloat(olStruct),
+    total: parseFloat(olMatter) + parseFloat(olManner) + parseFloat(olStruct),
   };
   // DPM
   let dpmName = req.body.dpmName;
@@ -545,9 +544,11 @@ app.post("/confirm-Room", function (req, res) {
   let dpmStruct = req.body.dpmStruct;
   let dpm = {
     name: dpmName,
-    matter: dpmMatter,
-    manner: dpmManner,
-    structure: dpmStruct,
+    matter: parseFloat(dpmMatter),
+    manner: parseFloat(dpmManner),
+    structure: parseFloat(dpmStruct),
+    total:
+      parseFloat(dpmMatter) + parseFloat(dpmManner) + parseFloat(dpmStruct),
   };
   // DOL
   let dolName = req.body.dolName;
@@ -556,9 +557,11 @@ app.post("/confirm-Room", function (req, res) {
   let dolStruct = req.body.dolStruct;
   let dol = {
     name: dolName,
-    matter: dolMatter,
-    manner: dolManner,
-    structure: dolStruct,
+    matter: parseFloat(dolMatter),
+    manner: parseFloat(dolManner),
+    structure: parseFloat(dolStruct),
+    total:
+      parseFloat(dolMatter) + parseFloat(dolManner) + parseFloat(dolStruct),
   };
   // MoG
   let MoGName = req.body.mogName;
@@ -567,9 +570,11 @@ app.post("/confirm-Room", function (req, res) {
   let MoGStruct = req.body.mogStruct;
   let mog = {
     name: MoGName,
-    matter: MoGMatter,
-    manner: MoGManner,
-    structure: MoGStruct,
+    matter: parseFloat(MoGMatter),
+    manner: parseFloat(MoGManner),
+    structure: parseFloat(MoGStruct),
+    total:
+      parseFloat(MoGMatter) + parseFloat(MoGManner) + parseFloat(MoGStruct),
   };
   // MoO
   let MoOName = req.body.mooName;
@@ -578,9 +583,11 @@ app.post("/confirm-Room", function (req, res) {
   let MoOStruct = req.body.mooStruct;
   let moo = {
     name: MoOName,
-    matter: MoOMatter,
-    manner: MoOManner,
-    structure: MoOStruct,
+    matter: parseFloat(MoOMatter),
+    manner: parseFloat(MoOManner),
+    structure: parseFloat(MoOStruct),
+    total:
+      parseFloat(MoOMatter) + parseFloat(MoOManner) + parseFloat(MoOStruct),
   };
   // GW
   let gwName = req.body.gwName;
@@ -589,9 +596,10 @@ app.post("/confirm-Room", function (req, res) {
   let gwStruct = req.body.gwStruct;
   let gw = {
     name: gwName,
-    matter: gwMatter,
-    manner: gwManner,
-    structure: gwStruct,
+    matter: parseFloat(gwMatter),
+    manner: parseFloat(gwManner),
+    structure: parseFloat(gwStruct),
+    total: parseFloat(gwMatter) + parseFloat(gwManner) + parseFloat(gwStruct),
   };
   // OW
   let owName = req.body.owName;
@@ -600,9 +608,10 @@ app.post("/confirm-Room", function (req, res) {
   let owStruct = req.body.owStruct;
   let ow = {
     name: owName,
-    matter: owMatter,
-    manner: owManner,
-    structure: owStruct,
+    matter: parseFloat(owMatter),
+    manner: parseFloat(owManner),
+    structure: parseFloat(owStruct),
+    total: parseFloat(owMatter) + parseFloat(owManner) + parseFloat(owStruct),
   };
   // END GETTING ROOM SCORES
   roomList = [pm, ol, dpm, dol, mog, moo, gw, ow];
@@ -661,7 +670,7 @@ app.post("/confirm-Room", function (req, res) {
     second: owName,
     total: coTotal,
   };
-  let teamsList = [og, oo, cg, co];
+  teamsList = [og, oo, cg, co];
 
   for (var i = 0; i < teamsList.length; i++) {
     for (var j = 0; j < teamsList.length - i - 1; j++) {
@@ -679,63 +688,22 @@ app.post("/DBRoom", async function (req, res) {
   let debate = {
     competetion: selectedComp,
     stage: stage,
+    room: parseFloat(selectedRoom),
     roomScores: {
-      PM: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      OL: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      DPM: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      DOL: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      MoG: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      MoO: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      GW: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
-      OW: {
-        name: "",
-        matter: "",
-        manner: "",
-        structure: "",
-        total: "",
-      },
+      PM: roomList[0],
+      OL: roomList[1],
+      DPM: roomList[2],
+      DOL: roomList[3],
+      MoG: roomList[4],
+      MoO: roomList[5],
+      GW: roomList[6],
+      OW: roomList[7],
+    },
+    teamScores: {
+      frst: teamsList[0],
+      scnd: teamsList[1],
+      thrd: teamsList[2],
+      frth: teamsList[3],
     },
   };
   const { MongoClient, ServerApiVersion } = require("mongodb");
@@ -762,5 +730,31 @@ app.post("/DBRoom", async function (req, res) {
   }
 });
 app.get("/viewDebates", function (req, res) {
-  res.render("viewDebates", { league: false, OC: false });
+  res.render("viewDebates", { dbDebates: {}, competetion: "" });
 });
+app.post("/viewComp", async function (req, res) {
+  let selectedViewComp = req.body.competetionView;
+  const { MongoClient, ServerApiVersion } = require("mongodb");
+  var url =
+    "mongodb+srv://tiqboa:TIQ2022@tiqluster.zi4f1.mongodb.net/?retryWrites=true&w=majority";
+
+  var client = new MongoClient(url, {
+    useNewUrlParser: true,
+    useUniFiedTopology: true,
+  });
+  await client.connect();
+  let dbDebates = [];
+  let dbDebateses = await client
+    .db("testTIQ")
+    .collection("debates")
+    .find({ competetion: selectedViewComp })
+    .forEach(function (document) {
+      dbDebates.push(document);
+    });
+  let competetion =
+    selectedViewComp === "OC" ? "Official Competetion" : "The League";
+  res.render("viewDebates", { dbDebates: dbDebates, competetion: competetion });
+  // console.log("kosomy");
+});
+
+//omy heya omak ya bro
